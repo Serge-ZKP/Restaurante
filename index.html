@@ -7,31 +7,57 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #f8f8f8;
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
     }
     header {
       padding: 12px;
       text-align: center;
       background: #111;
       color: white;
-      font-size: 18px;
     }
-    iframe {
+    .pdf-frame {
       width: 100%;
       height: calc(100vh - 50px);
       border: none;
+    }
+    .mobile-link {
+      display: none;
+      padding: 40px;
+      text-align: center;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      background: #111;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 18px;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    Menú del Restaurante
-  </header>
+<header>Menú del Restaurante</header>
 
-  <iframe src="menu.pdf"></iframe>
+<div id="desktop">
+  <iframe class="pdf-frame" src="menu.pdf"></iframe>
+</div>
+
+<div id="mobile" class="mobile-link">
+  <a class="btn" href="menu.pdf" target="_blank">
+    Ver menú
+  </a>
+</div>
+
+<script>
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  if (isIOS) {
+    document.getElementById("desktop").style.display = "none";
+    document.getElementById("mobile").style.display = "block";
+  }
+</script>
 
 </body>
 </html>
-
